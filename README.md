@@ -24,7 +24,7 @@ This project develops an **LLM-driven conversational agent** for business data. 
 To get a local copy of this project, open your terminal and run the following command. Replace `[YOUR_REPOSITORY_URL]` with the actual URL of this repository.
 
 ```bash
-git clone [YOUR_REPOSITORY_URL]
+git clone https://github.com/sky4320/Data-Visualization-LLM-Agent/
 ```
 
 Then, navigate into the project directory:
@@ -35,10 +35,10 @@ cd Data-Visualization-LLM-Agent
 
 ### 2\. Switching to the Development Branch (`dev`)
 
-All active development happens on the `dev` branch. After cloning, you need to switch to it from the default `main` branch.
+All active development happens on the `develop` branch. After cloning, you need to switch to it from the default `main` branch.
 
 ```bash
-git checkout dev
+git checkout develop
 ```
 
 ### 3\. Standard Workflow
@@ -46,7 +46,7 @@ git checkout dev
 Always pull the latest changes before you start working to avoid conflicts.
 
 ```bash
-git pull origin dev
+git pull origin develop
 ```
 
 For every new feature, bug fix, or task, create a new branch from `dev`. This keeps our development branch clean and helps with code reviews.
@@ -68,7 +68,7 @@ Finally, push your branch to the remote repository. The first time, use the `-u`
 git push -u origin feature/your-feature-name
 ```
 
-After your work is complete, create a Pull Request on GitHub to merge your feature branch into the **`dev`** branch.
+After your work is complete, create a Pull Request on GitHub to merge your feature branch into the **`develop`** branch.
 
 -----
 
