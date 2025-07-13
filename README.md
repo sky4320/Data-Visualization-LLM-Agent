@@ -21,7 +21,7 @@ This project develops an **LLM-driven conversational agent** for business data. 
 
 ### 1\. Cloning the Repository
 
-To get a local copy of this project, open your terminal and run the following command. Replace `[YOUR_REPOSITORY_URL]` with the actual URL of this repository.
+To get a local copy of this project, open your terminal and run the following command. 
 
 ```bash
 git clone https://github.com/sky4320/Data-Visualization-LLM-Agent/
@@ -49,10 +49,10 @@ Always pull the latest changes before you start working to avoid conflicts.
 git pull origin develop
 ```
 
-For every new feature, bug fix, or task, create a new branch from `dev`. This keeps our development branch clean and helps with code reviews.
+For every new feature, bug fix, or task, create a new branch from `develop`. This keeps our development branch clean and helps with code reviews.
 
 ```bash
-git checkout -b feature/your-feature-name dev
+git checkout -b feature/your-feature-name develop
 ```
 
 Once you’ve made your changes, stage and commit them.
