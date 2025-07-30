@@ -77,3 +77,28 @@ while True:
             print(tabulate(result, headers='keys', tablefmt='psql'))
     except Exception as e:
         print("\nError executing query:", e)
+
+# ------------------------------
+# Haris - Added for integration with app_controller.py
+# Wrapper function that takes a natural language query,
+# generates SQL using the existing generate_sql function,
+# executes it on the connected SQLite database,
+# and returns the results as a Pandas DataFrame.
+# ------------------------------
+def run_query(natural_query: str) -> pd.DataFrame:
+    try:
+        # Step 1: Generate SQL from the natural language query
+        sql = generate_sql(natural_query)
+        # Debugging output
+        print(f"[DEBUG] Generated SQL: {sql}")
+
+        # Step 2: Execute the SQL query on the database
+        df = pd.read_sql_query(sql, conn)
+
+        # Step 3: Return the query results as a DataFrame
+        return df
+
+    except Exception as e:
+        print(f"[ERROR] Failed to process query: {e}")
+        # Return empty DataFrame so visualizer doesn’t break
+        return pd.DataFrame()
