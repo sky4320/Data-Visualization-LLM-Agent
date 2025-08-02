@@ -1,10 +1,22 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+
 import sqlite3
 import sys
 import os
+# Ensure backend is importable
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Get the directory where this script (app.py) is located
+frontend_dir = os.path.dirname(os.path.abspath(__file__))
+# Go one level up to project root directory
+project_root = os.path.dirname(frontend_dir)
+
+# Build the absolute path to the database inside sql_engine_queryvision folder
+db_path = os.path.join(project_root, "sql_engine_queryvision", "Chinook_Sqlite.sqlite")
+# Build the absolute path to the log file in the same directory as the database
+log_path = os.path.join(project_root, "sql_engine_queryvision", "query_logs.log")
 
 
 from backend.llm_handler import generate_sql
@@ -36,15 +48,15 @@ chart_output_placeholder = st.empty()
 if user_query:
     with st.spinner("Generating SQL and fetching data..."):
         try:
-            # 1. Connect to DB
-            conn = sqlite3.connect("Chinook_Sqlite.sqlite")
+            # 1. Connect to DB (always use the correct absolute path)
+            conn = sqlite3.connect(db_path)
 
             # 2. Generate SQL from NL
             generated_sql = generate_sql(user_query, conn)
             sql_output_placeholder.code(generated_sql, language="sql")
 
             # 3. Run SQL
-            df = run_query(generated_sql)
+            df = run_query(generated_sql, db_path, log_path)
 
             # 4. Show result table or error
             if isinstance(df, str):

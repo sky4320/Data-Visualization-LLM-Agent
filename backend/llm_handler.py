@@ -7,16 +7,11 @@ from openai import OpenAI
 env_path = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=env_path)
 
+# Set the OpenAI API key
 api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
 print("API Key from env:", api_key)
 
-client = OpenAI(api_key=api_key)
-
-
-#client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Set in .env or environment')
-
-
-#client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Set in .env or environment
 
 def get_schema(cursor):
     schema = ""
@@ -43,9 +38,13 @@ def generate_sql(natural_query, conn):
 
     Question: {natural_query}
     """
-    response = client.responses.create(
-        model="gpt-4.1",
-        input=prompt
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are an expert SQL assistant."},
+            {"role": "user", "content": prompt}
+        ]
     )
-    sql_query = response.output_text.strip()
+    sql_query = response.choices[0].message.content.strip()
     return sql_query

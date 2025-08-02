@@ -8,8 +8,13 @@ from openai import OpenAI
 # Initialize OpenAI client
 client = OpenAI(api_key=os.getenv("Insert your OpenAI API key here"))
 
+
+# Always use the absolute path for DB and log file
+script_dir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(script_dir, "Chinook_Sqlite.sqlite")
+log_path = os.path.join(script_dir, "query_logs.log")
+
 # Connect to SQLite database
-db_path = "Chinook_Sqlite.sqlite"  # Ensure this is your actual file
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 

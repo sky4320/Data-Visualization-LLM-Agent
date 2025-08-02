@@ -1,3 +1,5 @@
+
+import os
 import sqlite3
 
 def list_tables_and_columns(db_file):
@@ -25,4 +27,10 @@ def list_tables_and_columns(db_file):
     conn.close()
 
 if __name__ == "__main__":
-    list_tables_and_columns("Chinook_Sqlite.sqlite")
+    # Always use the Chinook_Sqlite.sqlite in the sql_engine_queryvision directory relative to this script
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(script_dir, "Chinook_Sqlite.sqlite")
+    if not os.path.exists(db_path):
+        print(f"Error: Database file not found at {db_path}")
+        exit(1)
+    list_tables_and_columns(db_path)

@@ -1,17 +1,24 @@
+
 import sqlite3
 import pandas as pd
 import logging
+import os
+
+# Always use the absolute path for DB and log file
+script_dir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(script_dir, "Chinook_Sqlite.sqlite")
+log_path = os.path.join(script_dir, "query_logs.log")
 
 logging.basicConfig(
-    filename = "query_logs.log",
+    filename = log_path,
     level = logging.INFO,
     format = "%(asctime)s - %(levelname)s - %(message)s"
 )
 
 def run_query(user_sql):
     try:
-        # Connect to Chinook SQLite DB
-        conn = sqlite3.connect("Chinook_Sqlite.sqlite")
+        # Connect to Chinook SQLite DB (always use absolute path)
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         # Allow only SELECT and WITH queries (CTEs)
