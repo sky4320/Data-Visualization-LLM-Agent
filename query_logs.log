@@ -1,0 +1,29 @@
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+ERROR:root:ERROR: SELECT rating FROM rating; - Execution failed on sql 'SELECT rating FROM rating;': no such table: rating
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+ERROR:root:ERROR: SELECT alubam.alubam_id, alubam.rating
+FROM alubam; - Execution failed on sql 'SELECT alubam.alubam_id, alubam.rating
+FROM alubam;': no such table: alubam
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+ERROR:root:ERROR: SELECT album_id, rating FROM album; - Execution failed on sql 'SELECT album_id, rating FROM album;': no such table: album
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+ERROR:root:ERROR: SELECT City, COUNT(*) AS customer_count
+FROM Customer
+GROUP BY City
+ORDER BY customer_count DESC
+LIMIT 1; - Execution failed on sql 'SELECT City, COUNT(*) AS customer_count
+FROM Customer
+GROUP BY City
+ORDER BY customer_count DESC
+LIMIT 1;': no such table: Customer
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+ERROR:root:ERROR: SELECT City, COUNT(*) AS customer_count
+FROM Customer
+GROUP BY City
+ORDER BY customer_count DESC
+LIMIT 1; - Execution failed on sql 'SELECT City, COUNT(*) AS customer_count
+FROM Customer
+GROUP BY City
+ORDER BY customer_count DESC
+LIMIT 1;': no such table: Customer

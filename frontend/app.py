@@ -11,7 +11,11 @@ from backend.llm_handler import generate_sql
 from backend.query_executor import run_query
 
 # Page config
-st.set_page_config(page_title="LLM Data Analyst", layout="wide")
+st.set_page_config(
+    page_title="LLM Data Analyst",
+    page_icon="assets/llm_logo.png",  # This appears on browser tab
+    layout="wide"
+)
 st.title("💬 LLM-driven Conversational Data Analyst")
 st.markdown("Ask questions in natural language and get insights with SQL and visual charts!")
 
